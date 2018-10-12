@@ -34,10 +34,10 @@ public class MovieServiceImpl implements MovieService{
         return (List) movieRepository.findAll();
     }
     @Override
-    public Boolean updateMovie(int id, Movie movie){
+    public Movie updateMovie(int id, Movie movie){
         Movie  updateMovie=movieRepository.findById(id).get();
         movieRepository.save(movie);
-        return true;
+        return updateMovie;
     }
     @Override
     public Movie deleteMovie(int id){

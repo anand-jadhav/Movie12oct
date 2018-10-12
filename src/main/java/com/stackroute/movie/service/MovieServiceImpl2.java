@@ -32,16 +32,26 @@ public class MovieServiceImpl2 implements MovieService{
     public List<Movie> getAllMovies(){
         return (List) movieRepository.findAll();
     }
+
     @Override
-    public Boolean updateMovie(int id, Movie movie){
+    public Movie updateMovie(int id, Movie movie) throws MovieNotFoundException{
         Movie  updateMovie=movieRepository.findById(id).get();
+        if(movie==null)
+        {
+            throw new MovieNotFoundException("Movie not Found");
+        }
+
         movieRepository.save(movie);
-        return true;
+        return updateMovie;
     }
     @Override
-    public Movie deleteMovie(int id){
+    public Movie deleteMovie(int id) throws MovieNotFoundException{
         Movie deleteMovie=movieRepository.findById(id).get();
         movieRepository.delete(deleteMovie);
+        if(deleteMovie==null)
+        {
+            throw new MovieNotFoundException("Movie not Found");
+        }
         return deleteMovie;
     }
     @Override
@@ -53,7 +63,6 @@ public class MovieServiceImpl2 implements MovieService{
         }
         return movie;
     }
-
 
 
 

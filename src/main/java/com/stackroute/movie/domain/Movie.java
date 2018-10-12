@@ -6,18 +6,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 //import javax.persistence.Entity;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 //@Entity----Done for Working of MongoDB
 @Document(collection = "movies")//COmponent added for working of MongoDB
 public class Movie {
     @Id
-         private int imdbId;
-        private String movieTitle;
-        private String posterUrl;
-        private int rating;
-         private double yearOfRelease;
+        @NotNull  private int imdbId;
+        @NotNull private String movieTitle;
+        @NotNull private String posterUrl;
+        @PositiveOrZero private int rating;
+        @NotNull @Min(1900) @PositiveOrZero private double yearOfRelease;
 
     public Movie() {
     }

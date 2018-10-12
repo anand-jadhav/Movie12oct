@@ -1,6 +1,5 @@
 package com.stackroute.movie.repository;
 
-
 import com.stackroute.movie.domain.Movie;
 //import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.jpa.repository.Query;
